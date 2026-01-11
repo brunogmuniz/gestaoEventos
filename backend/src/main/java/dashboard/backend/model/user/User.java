@@ -59,5 +59,4 @@ public class User {
     public void preUpdate() {
         updatedAt = Instant.now();
     }
-
 }
