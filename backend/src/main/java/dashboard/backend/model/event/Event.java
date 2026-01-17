@@ -15,7 +15,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "events")
+@Table(name = "event")
 public class Event {
 
     @Id
