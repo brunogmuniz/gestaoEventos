@@ -29,7 +29,6 @@ public class User {
     private String name;
 
     @NotBlank
-    @JsonIgnore
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 
@@ -39,7 +38,7 @@ public class User {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "role_user", nullable = false)
+    @Column(name = "role", nullable = false)
     private ROLE_USER role;
 
     @Column(nullable = false, updatable = false)

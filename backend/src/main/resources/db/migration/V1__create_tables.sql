@@ -33,7 +33,7 @@ CREATE TABLE users (
                        role role NOT NULL,
                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                       is_active BOOLEAN DEFAULT TRUE
+                       active BOOLEAN DEFAULT TRUE
 );
 
 -- TABELA MATERIAL

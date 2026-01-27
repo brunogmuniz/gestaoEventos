@@ -1,12 +1,10 @@
-version: "3.9"
-
 services:
   postgres:
     image: postgres:16
     container_name: postgres_app
     restart: always
     environment:
-      POSTGRES_DB: dashboard_db
+      POSTGRES_DB: evento_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
     ports:
