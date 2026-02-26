@@ -1,23 +1,20 @@
 <section>
-<form class="form">
+  <form class="form" [formGroup]="form" (ngSubmit)="login()">
   <p class="form-title">Entre na sua conta!</p>
   <div class="input-container">
-    <input placeholder="Enter email" type="email">
+    <input placeholder="Inserir Matrícula" formControlName="usuario" required >
     <span>
-              <i class="la la-user text-[var(--primary-color)] text-xl"></i>
-          </span>
+      <i class="la la-user text-[var(--primary-color)] text-xl"></i>
+    </span>
   </div>
   <div class="input-container">
-    <input placeholder="Enter password" type="password">
-
+    <input placeholder="Enter password" type="password"  name="senha" formControlName="senha">
     <span>
-
-            <i class="la la-eye text-[var(--primary-color)] text-xl"></i>
-
-          </span>
+      <i class="la la-eye text-[var(--primary-color)] text-xl"></i>
+    </span>
   </div>
   <button class="submit" type="submit">
-    Sign in
+    Entrar
   </button>
 
 </form>

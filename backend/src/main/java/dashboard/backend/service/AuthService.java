@@ -18,7 +18,7 @@ public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    private final String jwtSecret = "segredo-super-secreto-que-deve-ser-grande"; // use environment variable na produção
+    private final String jwtSecret = "segredo-super-secreto-que-deve-ser-grande";
 
     public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
@@ -26,10 +26,10 @@ public class AuthService {
     }
 
     public LoginResponse login(LoginDTO loginDTO) {
-        User user = userRepository.findByEmail(loginDTO.getEmail())
+        User user = userRepository.findByName(loginDTO.getUsuario())
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
-        if (!passwordEncoder.matches(loginDTO.getPassword(), user.getPasswordHash())) {
+        if (!passwordEncoder.matches(loginDTO.getSenha(), user.getPasswordHash())) {
             throw new RuntimeException("Senha inválida");
         }
 
@@ -37,7 +37,7 @@ public class AuthService {
                 .setSubject(user.getEmail())
                 .claim("role", user.getRole())
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24)) // 1 dia
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24))
                 .signWith(Keys.hmacShaKeyFor(jwtSecret.getBytes()), SignatureAlgorithm.HS256)
                 .compact();
 
